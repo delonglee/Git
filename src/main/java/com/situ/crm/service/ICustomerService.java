@@ -19,5 +19,9 @@ public interface ICustomerService {
 	
 	EasyUIDataGrideResult findCustomerContribute(Integer page,Integer rows,CustomerContribute customerContribute);
 	
+	ServerResponse findCustomerConstitute();
+	
+	ServerResponse findCustomerServiceBz();
 
+	void chekCustomerLoss();
 }

@@ -3,6 +3,8 @@ package com.situ.crm.service;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.ServletOutputStream;
+
 import com.situ.crm.common.EasyUIDataGrideResult;
 import com.situ.crm.common.ServerResponse;
 import com.situ.crm.pojo.DataDic;
@@ -24,6 +26,8 @@ public interface ISaleChanceService {
 	ServerResponse findById(Integer id);
 	
 	ServerResponse updateDevResult(Integer id, Integer devResult);
+	
+	void exportExcel(ServletOutputStream outputStream);
 	
 	
 

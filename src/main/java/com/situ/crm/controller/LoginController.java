@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.situ.crm.pojo.User;
 import com.situ.crm.service.IUserService;
+import com.situ.crm.util.MD5Util;
 
 @Controller
 @RequestMapping("/login")
@@ -24,6 +25,7 @@ public class LoginController {
 	
 	@RequestMapping("login")
 	public String login(String name,String password,HttpServletRequest request){
+		//String md5 = MD5Util.EncodeUtf8(password);
 		User user = userService.login(name, password);
 		System.out.println(user);
 		if(user != null){

@@ -3,6 +3,9 @@ package com.situ.crm.controller;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,13 +20,6 @@ import com.situ.crm.service.ISaleChanceService;
 @RequestMapping("/saleChance")
 public class SaleChanceController {
 	
-/*	@InitBinder
-	protected void initBinder(WebDataBinder binder) {
-        binder.registerCustomEditor(Date.class, new CustomDateEditor(
-                new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"), true));
-        binder.registerCustomEditor(Date.class, new CustomDateEditor(
-                new SimpleDateFormat("yyyy-MM-dd"), true));
-    }*/
 
 	@Autowired
 	private ISaleChanceService saleChanceService;
@@ -75,6 +71,24 @@ public class SaleChanceController {
 	@ResponseBody
 	public ServerResponse updateDevResult(Integer id, Integer devResult){
 		return saleChanceService.updateDevResult(id, devResult);
+	}
+	
+	@RequestMapping("/exportExcel")
+	public void exportExcel(HttpServletResponse response) {
+		try {
+			/*//1、查找用户列表
+			List<SaleChance> list = saleChanceService.findAll();
+			//2、导出
+*/			response.setContentType("application/x-execl");
+			response.setHeader("Content-Disposition", "attachment;filename=" + new String("用户列表.xls".getBytes(), "ISO-8859-1"));
+			ServletOutputStream outputStream = response.getOutputStream();
+			saleChanceService.exportExcel(outputStream);
+			if(outputStream != null){
+				outputStream.close();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

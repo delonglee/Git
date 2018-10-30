@@ -30,6 +30,18 @@ public class CustomerController {
 		return customerService.findCustomerContribute(page, rows, customerContribute);
 	}
 	
+	@RequestMapping("/findCustomerConstitute")
+	@ResponseBody
+	public ServerResponse findCustomerConstitute(){
+		return customerService.findCustomerConstitute();
+	}
+	
+	@RequestMapping("/findCustomerServiceBz")
+	@ResponseBody
+	public ServerResponse findCustomerServiceBz(){
+		return customerService.findCustomerServiceBz();
+	}
+	
 	@RequestMapping("/delete")
 	@ResponseBody
 	public ServerResponse delete(String ids){
@@ -53,5 +65,8 @@ public class CustomerController {
 	public ServerResponse findById(Integer id){
 		return customerService.findById(id);
 	}
+	
+	
+	
 
 }

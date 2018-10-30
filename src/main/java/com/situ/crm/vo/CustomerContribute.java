@@ -1,5 +1,7 @@
 package com.situ.crm.vo;
-
+/*
+ * 客户贡献
+ */
 public class CustomerContribute {
 	
 	private String name;

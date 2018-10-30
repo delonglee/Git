@@ -2,7 +2,9 @@ package com.situ.crm.mapper;
 
 import com.situ.crm.pojo.Customer;
 import com.situ.crm.pojo.CustomerExample;
+import com.situ.crm.vo.CustomerConstitute;
 import com.situ.crm.vo.CustomerContribute;
+import com.situ.crm.vo.CustomerServiceBz;
 
 import java.util.List;
 import java.util.Map;
@@ -102,4 +104,15 @@ public interface CustomerMapper {
      * 用户贡献
      */
     List<CustomerContribute> findCustomerContribute(Map<String, Object> map);
+    /*
+     * 用户构成
+     */
+    List<CustomerConstitute> findCustomerConstitute();
+    /*
+     * 用户服务分析
+     */
+    List<CustomerServiceBz> findCustomerServiceBz();
+
+	List<Customer> findLossCustomer();
+	
 }

@@ -554,15 +554,29 @@
   </update>
   
   <!-- 查询客户贡献信息 -->
-  <select id="findCustomerContribute" resultType="com.situ.crm.vo.CustomerContribute">
+  <select id="findCustomerContribute" parameterType="String"  resultType="com.situ.crm.vo.CustomerContribute">
   	SELECT c.name,SUM(oi.sum) AS contribute FROM customer AS c LEFT JOIN customer_order AS co ON c.id=co.customer_id
 	LEFT JOIN order_item AS oi ON co.id=oi.order_id
 	<where>
-		<if test="name != null and name !=''">
+		<if test="name!=null and !&quot;&quot;.equals(name.trim())">
 			WHERE c.name LIKE '%${name}%'
 		</if>
 	
 	</where>
 	GROUP BY c.id ORDER BY contribute DESC
   </select>
+  
+  <select id="findCustomerConstitute" resultType="com.situ.crm.vo.CustomerConstitute">
+  	SELECT LEVEL as customerLevel,COUNT(*) AS customerNum FROM customer GROUP BY LEVEL
+  </select>
+  
+  <select id="findCustomerServiceBz" resultType="com.situ.crm.vo.CustomerServiceBz">
+  	SELECT service_type AS serviceType,COUNT(*) AS serviceNum FROM customer_service GROUP BY service_type
+  </select>
+  
+	<!--   查找规定时间内流失的客户 -->
+	<select id="findLossCustomer" resultMap="BaseResultMap">
+		SELECT <include refid="Base_Column_List" />
+		FROM customer t1 WHERE id NOT IN (SELECT customer_id FROM customer_order WHERE DATE_ADD(order_date,INTERVAL 6 MONTH) > NOW()) AND t1.status=0;
+	</select>
 </mapper>

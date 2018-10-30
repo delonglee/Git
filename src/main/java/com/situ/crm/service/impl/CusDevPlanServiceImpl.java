@@ -53,6 +53,7 @@ public class CusDevPlanServiceImpl implements ICusDevPlanService{
 		for (String id : isArry) {
 			cusDevPlanMapper.deleteByPrimaryKey(Integer.parseInt(id));
 		}
+
 		return ServerResponse.createSuccess("删除成功");
 	}
 

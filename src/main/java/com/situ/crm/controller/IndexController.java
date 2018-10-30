@@ -86,5 +86,17 @@ public class IndexController {
 	public String customerContribute(){
 		return "customer_contribute";
 	}
+	
+	//客户构成分析
+	@RequestMapping("/customerConstitute")
+	public String customerConstitute(){
+		return"customer_constitute";
+	}
+	
+	//客户服务分析
+	@RequestMapping("/customerServiceBz")
+	public String customerServiceBz(){
+		return "customer_serviceBz";
+	}
 
 }

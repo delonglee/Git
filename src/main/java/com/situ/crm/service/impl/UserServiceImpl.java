@@ -101,8 +101,8 @@ public class UserServiceImpl implements IUserService{
 
 	@Override
 	public List<User> findByRole() {
-		
-		return userMapper.findByRole();
+		List users = userMapper.findByRole();
+		return users;
 	}
 
 	@Override

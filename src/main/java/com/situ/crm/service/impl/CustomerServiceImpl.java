@@ -16,19 +16,31 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.situ.crm.common.EasyUIDataGrideResult;
 import com.situ.crm.common.ServerResponse;
+import com.situ.crm.mapper.CustomerLossMapper;
 import com.situ.crm.mapper.CustomerMapper;
+import com.situ.crm.mapper.CustomerOrderMapper;
 import com.situ.crm.pojo.Customer;
 import com.situ.crm.pojo.CustomerExample;
 import com.situ.crm.pojo.CustomerExample.Criteria;
+import com.situ.crm.pojo.CustomerLoss;
+import com.situ.crm.pojo.CustomerOrder;
 import com.situ.crm.service.ICustomerService;
 import com.situ.crm.util.Util;
+import com.situ.crm.vo.CustomerConstitute;
 import com.situ.crm.vo.CustomerContribute;
+import com.situ.crm.vo.CustomerServiceBz;
 
 @Service
 public class CustomerServiceImpl implements ICustomerService{
 	
 	@Autowired
 	private CustomerMapper customerMapper;
+	
+	@Autowired
+	private CustomerOrderMapper customerOrderMapper;
+	
+	@Autowired
+	private CustomerLossMapper customerLossMapper;
 
 	@Override
 	public EasyUIDataGrideResult customerList(Integer page,Integer rows,Customer customer) {
@@ -121,6 +133,56 @@ public class CustomerServiceImpl implements ICustomerService{
 		}else {
 			return ServerResponse.createError("查询失败");
 		}
+	}
+
+	@Override
+	public ServerResponse findCustomerConstitute() {
+		// TODO Auto-generated method stub
+		List<CustomerConstitute> list = customerMapper.findCustomerConstitute();
+		if (list.size()>0) {
+			return ServerResponse.createSuccess("查询成功", list);
+		}
+		return ServerResponse.createError("查询失败");
+	}
+
+	@Override
+	public ServerResponse findCustomerServiceBz() {
+		// TODO Auto-generated method stub
+		List<CustomerServiceBz> BZlist = customerMapper.findCustomerServiceBz();
+		if (BZlist.size()>0) {
+			return ServerResponse.createSuccess("查询成功", BZlist);
+		}
+		return ServerResponse.createError("查询失败");
+	}
+
+	@Override
+	public void chekCustomerLoss() {
+		// TODO Auto-generated method stub
+		System.out.println("CustomerServiceImpl.chekCustomerLoss()");
+		//查找流失客户
+		List<Customer> customerList= customerMapper.findLossCustomer();
+		for (Customer customer : customerList) {
+			//实例化客户流失实体
+			CustomerLoss customerLoss = new CustomerLoss();
+			customerLoss.setCustomerNo(customer.getNum());
+			customerLoss.setCustomerName(customer.getName());
+			customerLoss.setCustomerManager(customer.getManagerName());
+			//查找指定客户最近的订单
+			CustomerOrder customerOrder = customerOrderMapper.findLastOrderByCustomerId(customer.getId());
+			if (customerOrder == null) {
+				customerLoss.setLastOrderTime(null);
+			} else {
+				//设置最近的下单日期
+				customerLoss.setLastOrderTime(customerOrder.getOrderDate());
+			}
+			//添加客户流失表
+			customerLossMapper.insert(customerLoss);
+			//客户表中客户状态修改1 流失状态
+			customer.setStatus(1);
+			customerMapper.updateByPrimaryKeySelective(customer);
+			
+		}
+		
 	}
 
 

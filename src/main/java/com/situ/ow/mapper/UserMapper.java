@@ -1,7 +1,7 @@
 package com.situ.ow.mapper;
 
-import com.situ.crm.pojo.User;
-import com.situ.crm.pojo.UserExample;
+import com.situ.ow.pojo.User;
+import com.situ.ow.pojo.UserExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

@@ -1,8 +1,8 @@
 package com.situ.ow.service;
 
-import com.situ.crm.common.EasyUIDataGrideResult;
-import com.situ.crm.common.ServerResponse;
-import com.situ.crm.pojo.User;
+import com.situ.ow.common.EasyUIDataGrideResult;
+import com.situ.ow.common.ServerResponse;
+import com.situ.ow.pojo.User;
 
 import java.util.List;
 

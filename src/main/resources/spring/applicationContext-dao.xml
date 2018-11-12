@@ -42,6 +42,6 @@
      	 自动创建到spring容器中，bean的id是mapper的类名（首字母小写） --> 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
        <!-- 设置Mapper扫描包 -->
-       <property name="basePackage" value="com.situ.crm.mapper" />
+       <property name="basePackage" value="com.situ.ow.mapper" />
     </bean>
 </beans>

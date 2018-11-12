@@ -36,7 +36,7 @@
     <!-- 切面 -->
     <aop:config>
        <aop:advisor advice-ref="txAdvice"
-           pointcut="execution(* com.situ.crm.service..*.*(..))" />
+           pointcut="execution(* com.situ.ow.service..*.*(..))" />
     </aop:config>
 
 </beans>

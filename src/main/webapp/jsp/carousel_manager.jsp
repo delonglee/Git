@@ -10,7 +10,7 @@
 		$(function(){
 			/*展示数据的datagrid表格*/
 			$("#datagrid").datagrid({
-				url:'${ctx}/saleChance/saleChanceManager.action',
+				url:'${ctx}/saleChance/carouselManager.action',
 				method:'get',
 				fit:true,
 				singleSelect:false,

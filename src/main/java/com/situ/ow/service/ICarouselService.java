@@ -9,7 +9,7 @@ import java.util.Date;
 public interface ICarouselService {
 
 
-    EasyUIDataGrideResult customerLossList(Integer page, Integer rows, Carousel carousel, Date beginTime, Date endTime);
+    EasyUIDataGrideResult carouselList(Integer page, Integer rows, Carousel carousel, Date beginTime, Date endTime);
 
     ServerResponse delete(String ids);
 

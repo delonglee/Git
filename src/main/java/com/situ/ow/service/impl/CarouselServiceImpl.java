@@ -14,7 +14,7 @@ public class CarouselServiceImpl implements ICarouselService {
 
 
     @Override
-    public EasyUIDataGrideResult customerLossList(Integer page, Integer rows, Carousel carousel, Date beginTime, Date endTime) {
+    public EasyUIDataGrideResult carouselList(Integer page, Integer rows, Carousel carousel, Date beginTime, Date endTime) {
         return null;
     }
 

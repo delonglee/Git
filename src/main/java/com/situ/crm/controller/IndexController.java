@@ -30,7 +30,7 @@ public class IndexController {
 	//营销机会管理
 	@RequestMapping("/saleChance")
 	public String saleChance(){
-		return "saleChance_manager";
+		return "carousel_manager";
 	}
 	
 	//

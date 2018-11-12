@@ -19,10 +19,10 @@ public class CarouselController{
     @Autowired
     private ICarouselService carouselService;
 
-    @RequestMapping("/customerLossManager")
+    @RequestMapping("/carouselManager")
     @ResponseBody
-    public EasyUIDataGrideResult customerLossManager(Integer page, Integer rows, Carousel carousel, Date beginTime, Date endTime){
-        return carouselService.customerLossList(page, rows,carousel,beginTime,endTime);
+    public EasyUIDataGrideResult carouselManager(Integer page, Integer rows, Carousel carousel, Date beginTime, Date endTime){
+        return carouselService.carouselList(page, rows,carousel,beginTime,endTime);
     }
 
     @RequestMapping("/findById")

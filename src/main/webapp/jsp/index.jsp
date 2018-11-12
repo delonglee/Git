@@ -101,11 +101,11 @@
 		</div>
 	</div>
 </div>
-<div region="west" style="width: 200px" title="导航菜单111111" split="true">
+<div region="west" style="width: 200px" title="导航菜单" split="true">
 	<div class="easyui-accordion" data-options="fit:true,border:false">
 		<div title="营销管理" data-options="selected:true,iconCls:'icon-yxgl'"
 			 style="padding: 10px">
-			<a href="javascript:openTab('营销机会管理','${ctx}/index/saleChance.action','icon-yxjhgl')"
+			<a href="javascript:openTab('营销机会管理','${ctx}/index/carousel.action','icon-yxjhgl')"
 			class="easyui-linkbutton"
 			data-options="plain:true,iconCls:'icon-yxjhgl'"
 			style="width: 150px">营销机会管理</a>

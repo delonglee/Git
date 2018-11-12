@@ -101,23 +101,28 @@
 		</div>
 	</div>
 </div>
-<div region="west" style="width: 200px" title="导航菜单" split="true">
+<div region="west" style="width: 200px" title="网站配置" split="true">
 	<div class="easyui-accordion" data-options="fit:true,border:false">
-		<div title="营销管理" data-options="selected:true,iconCls:'icon-yxgl'"
+		<div title="首页管理" data-options="selected:true,iconCls:'icon-yxgl'"
 			 style="padding: 10px">
-			<a href="javascript:openTab('营销机会管理','${ctx}/index/carousel.action','icon-yxjhgl')"
+			<a href="javascript:openTab('轮播图管理','${ctx}/index/carousel.action','icon-yxjhgl')"
 			class="easyui-linkbutton"
 			data-options="plain:true,iconCls:'icon-yxjhgl'"
-			style="width: 150px">营销机会管理</a>
-
-			<a
-				href="javascript:openTab('客户开发计划','${ctx}/index/cusdevplanManage.action','icon-khkfjh')"
-				class="easyui-linkbutton"
-				data-options="plain:true,iconCls:'icon-khkfjh'"
-				style="width: 150px">客户开发计划</a>
+			style="width: 150px">轮播图管理</a>
 		</div>
+
+
+
+
+
+
 		<div title="客户管理" data-options="iconCls:'icon-khgl'"
 			 style="padding: 10px;">
+			<a
+					href="javascript:openTab('客户开发计划','${ctx}/index/cusdevplanManage.action','icon-khkfjh')"
+					class="easyui-linkbutton"
+					data-options="plain:true,iconCls:'icon-khkfjh'"
+					style="width: 150px">客户开发计划</a>
 			<a
 					href="javascript:openTab('客户信息管理','${ctx}/index/customer.action','icon-khxxgl')"
 					class="easyui-linkbutton"
@@ -197,7 +202,7 @@
 	</div>
 </div>
 <div region="south" style="height: 25px; padding: 5px" align="center">
-	Java1707CRM管理系统
+	官网管理系统
 </div>
 
 

@@ -20,20 +20,21 @@
 				pagination:true,
 				columns:[[
 					 {field:'cb',checkbox:true,align:'center'},
-					 {field:'id',title:'编号',width:80,align:'center'},
-					 {field:'customerName',title:'客户名称',width:100,align:'center'},
-					 {field:'overview',title:'概要',width:80,align:'center'},
-					 {field:'linkMan',title:'联系人',width:80,align:'center'},
-					 {field:'linkPhone',title:'联系电话',width:80,align:'center'},
-					 {field:'createMan',title:'创建人',width:80,align:'center'},
-					 {field:'createTime',title:'创建时间',width:80,align:'center'},
+					 {field:'id',title:'ID',width:80,align:'center'},
+					 {field:'index',title:'序号',width:80,align:'center'},
+					 {field:'textInfo',title:'文字信息',width:100,align:'center'},
+					 {field:'urlInfo',title:'图片',width:80,align:'center'},
 					 {field:'status',title:'状态',width:80,align:'center',formatter:function(value,row,index){
-						 if (value==1) {
-								return "已分配";
-							}else{
-								return "未分配";
-							}
-						 }}
+                            if (value==1) {
+                                return "已分配";
+                            }else{
+                                return "未分配";
+                            }
+						 }
+					 },
+					 {field:'createMan',title:'创建人',width:80,align:'center'},
+					 {field:'createTime',title:'创建时间',width:80,align:'center'}
+
 				]]
 			});
 
@@ -242,11 +243,11 @@
 				</tr>
 				<tr>
 					<td>指派给：</td>
-					<td><input id="assignMan" id="assignMan" name="assignMan" class="easyui-combobox" data-options="    
+					<%--<td><input id="assignMan" id="assignMan" name="assignMan" class="easyui-combobox" data-options="
 			        valueField: 'trueName',    
 			        textField: 'trueName',    
 			        url: '${ctx}/user/findByRole.action',    
-			        panelHeight:'auto'" /></td>
+			        panelHeight:'auto'" /></td>--%>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 					<td>指派时间：</td>
 					<td><input type="text" id="assignTime" name="assignTime"  readonly="readonly"></td>

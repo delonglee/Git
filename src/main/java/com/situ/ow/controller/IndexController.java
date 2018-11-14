@@ -15,7 +15,7 @@ public class IndexController {
 
 	//营销机会管理
 	@RequestMapping("/carousel")
-	public String saleChance(){
+	public String carousel(){
 		return "carousel_manager";
 	}
 

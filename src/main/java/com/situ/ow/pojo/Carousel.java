@@ -16,7 +16,7 @@ public class Carousel {
     private String version;
     private String status;
     private String updateUser;
-
+    private Date updateTime;
 
 
     public String getId() { return id; }
@@ -113,7 +113,7 @@ public class Carousel {
         this.updateTime = updateTime;
     }
 
-    private Date updateTime;
+
 
 
 }

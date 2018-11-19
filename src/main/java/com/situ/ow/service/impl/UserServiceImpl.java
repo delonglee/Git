@@ -35,6 +35,7 @@ public class UserServiceImpl implements IUserService {
 		//2.执行查询
 		//rows:执行分页之后的数据
 		Criteria criteria = userExample.createCriteria();
+
 		if (StringUtils.isNotEmpty(user.getName())) {
 			criteria.andNameLike(Util.formatLike(user.getName()));
 		}

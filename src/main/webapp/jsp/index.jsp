@@ -15,7 +15,7 @@
 </head>
 <body>
 
-   <%-- <div >
+    <%-- <div >
         <div >欢迎来到清华科技园!</div>
         <div class="fr">
             <div class="login">
@@ -98,6 +98,9 @@
 
         <div class="Choices_text">
             <div class="Choices_content">
+                <div class="Choicesnext">
+                    <img src="/resources/images/Choicesnext.png" width="100%">
+                </div>
                 <div class="Choices_banner">
                     <ul>
                         <li>
@@ -137,9 +140,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="Choicesnext">
-                    <img src="/resources/images/Choicesnext.png" width="100%">
-                </div>
+
                 <div class="Choicestel">
                     <ul>
                         <li><01/04></li>
@@ -150,6 +151,10 @@
                 </div>
             </div>
         </div>
+
+
+
+
     </div>
 
 </body>

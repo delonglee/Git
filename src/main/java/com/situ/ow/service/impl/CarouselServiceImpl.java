@@ -7,7 +7,10 @@ import com.situ.ow.common.ServerResponse;
 import com.situ.ow.mapper.CarouselMapper;
 import com.situ.ow.pojo.Carousel;
 import com.situ.ow.pojo.CarouselExample;
+import com.situ.ow.pojo.CarouselExample.Criteria;
 import com.situ.ow.service.ICarouselService;
+import com.situ.ow.util.Util;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,7 +35,15 @@ public class CarouselServiceImpl implements ICarouselService {
         //1.添加pagehelper插件后 使用pagehelper设置分页
         PageHelper.startPage(page,rows);
         //2.执行查询//rows:执行分页之后的数据
-        carouselExample.createCriteria();
+        Criteria criteria = carouselExample.createCriteria();
+
+
+        if (StringUtils.isNotEmpty(carousel.getTextInfo())) {
+            //criteria.addTextinfoLike(Util.formatLike(carousel.getTextInfo()));
+        }
+
+
+
         carouselExample.setOrderByClause("index_num");
         List<Carousel> carousellist = carouselMapper.selectByExample(carouselExample);
         //得到total

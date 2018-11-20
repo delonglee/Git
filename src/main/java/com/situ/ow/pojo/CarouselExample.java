@@ -63,6 +63,12 @@ public class CarouselExample {
         distinct = false;
     }
 
+    protected void addCriterion(String condition, Object value, String property) {
+        if (value == null) {
+            throw new RuntimeException("Value for " + property + " cannot be null");
+        }
+        //criteria.add(new Criterion(condition, value));
+    }
     protected abstract static class GeneratedCriteria {
         protected List<Criterion> criteria;
 

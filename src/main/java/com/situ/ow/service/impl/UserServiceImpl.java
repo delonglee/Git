@@ -7,7 +7,6 @@ import com.situ.ow.common.ServerResponse;
 import com.situ.ow.mapper.UserMapper;
 import com.situ.ow.pojo.User;
 import com.situ.ow.pojo.UserExample;
-import com.situ.ow.pojo.UserExample.Criteria;
 import com.situ.ow.util.Util;
 import com.situ.ow.service.IUserService;
 import org.apache.commons.lang3.StringUtils;
@@ -23,7 +22,7 @@ public class UserServiceImpl implements IUserService {
 	private UserMapper userMapper;
 
 	@Override
-	public EasyUIDataGrideResult userList(Integer page,Integer rows,User user) {
+	public EasyUIDataGrideResult userList(Integer page, Integer rows, User user) {
 		// TODO Auto-generated method stub
 		
 		EasyUIDataGrideResult result = new EasyUIDataGrideResult();
@@ -34,7 +33,7 @@ public class UserServiceImpl implements IUserService {
 		PageHelper.startPage(page,rows);
 		//2.执行查询
 		//rows:执行分页之后的数据
-		Criteria criteria = userExample.createCriteria();
+		UserExample.Criteria criteria = userExample.createCriteria();
 
 		if (StringUtils.isNotEmpty(user.getName())) {
 			criteria.andNameLike(Util.formatLike(user.getName()));
@@ -53,7 +52,7 @@ public class UserServiceImpl implements IUserService {
 		// TODO Auto-generated method stub
 		String[] isArry = ids.split(",");
 		for (String id : isArry) {
-			userMapper.deleteByPrimaryKey(Integer.parseInt(id));
+			//userMapper.deleteByPrimaryKey(Integer.parseInt(id));
 		}
 		return ServerResponse.createSuccess("删除成功");
 	}
@@ -63,7 +62,7 @@ public class UserServiceImpl implements IUserService {
 		// TODO Auto-generated method stub
 		if (userMapper.insert(user) > 0) {
 			return ServerResponse.createSuccess("添加成功");
-			
+
 		}
 		return ServerResponse.createError("添加失败");
 	}
@@ -71,41 +70,43 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	public ServerResponse update(User user) {
 		// TODO Auto-generated method stub
-		if (userMapper.updateByPrimaryKey(user)>0) {
-			return ServerResponse.createSuccess("修改成功");
-			
-		}
+//		if (userMapper.updateByPrimaryKey(user)>0) {
+//			return ServerResponse.createSuccess("修改成功");
+//
+//		}
 		return ServerResponse.createError("修改失败");
 	}
 
 	@Override
 	public User login(String name, String password) {
 		// TODO Auto-generated method stub
-		return userMapper.login(name, password);
-		
+		//return userMapper.login(name, password);
+		return  null;
 	}
 
 	@Override
 	public ServerResponse updateById(User user) {
 		// TODO Auto-generated method stub
 		System.out.println(user);
-		if (userMapper.updateByPrimaryKeySelective(user) > 0) {
-			return ServerResponse.createSuccess("修改成功");
-			
-		}
+//		if (userMapper.updateByPrimaryKeySelective(user) > 0) {
+//			return ServerResponse.createSuccess("修改成功");
+//
+//		}
 		return ServerResponse.createError("修改失败");
 	}
 
 	@Override
 	public List<User> findByRole() {
-		List users = userMapper.findByRole();
-		return users;
+//		List users = userMapper.findByRole();
+//		return users;
+		return null;
 	}
 
 	@Override
 	public List<User> findManageName() {
 		// TODO Auto-generated method stub
-		return userMapper.findManageName();
+		//return userMapper.findManageName();
+		return null;
 	}
 
 }

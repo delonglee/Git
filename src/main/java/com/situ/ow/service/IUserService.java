@@ -6,6 +6,7 @@ import com.situ.ow.pojo.User;
 
 import java.util.List;
 
+
 public interface IUserService {
 	
 	EasyUIDataGrideResult userList(Integer page, Integer rows, User user);

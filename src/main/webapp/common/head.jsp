@@ -15,5 +15,5 @@
 <script type="text/javascript" src="${ctx}/resources/thirdlib/jquery-easyui/locale/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript" src="${ctx}/resources/thirdlib/echarts.common.min.js"></script>
 
-<link rel="stylesheet" type="text/css" href="${ctx}/resources/thirdlib/jquery-easyui/themes/metro-orange/easyui.css">=
+<link rel="stylesheet" type="text/css" href="${ctx}/resources/thirdlib/jquery-easyui/themes/metro-orange/easyui.css">
 <link rel="stylesheet" type="text/css" href="${ctx}/resources/thirdlib/jquery-easyui/themes/icon.css">

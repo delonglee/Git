@@ -5,11 +5,14 @@ import com.situ.ow.common.ServerResponse;
 import com.situ.ow.pojo.Carousel;
 
 import java.util.Date;
+import java.util.List;
 
 public interface ICarouselService {
 
 
     EasyUIDataGrideResult carouselList(Integer page, Integer rows, Carousel carousel, Date beginTime, Date endTime);
+
+    List carouselList ();
 
     ServerResponse delete(String ids);
 

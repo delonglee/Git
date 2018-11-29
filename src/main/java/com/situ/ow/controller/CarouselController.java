@@ -1,5 +1,6 @@
 package com.situ.ow.controller;
 
+import com.google.gson.Gson;
 import com.situ.ow.common.EasyUIDataGrideResult;
 import com.situ.ow.common.ServerResponse;
 import com.situ.ow.pojo.Carousel;
@@ -8,32 +9,75 @@ import com.situ.ow.service.ICarouselService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/carousel")
-public class CarouselController{
+public class CarouselController {
 
     @Autowired
     private ICarouselService carouselService;
 
     @RequestMapping("/carouselManager")
     @ResponseBody
-    public EasyUIDataGrideResult carouselManager(Integer page, Integer rows, Carousel carousel, Date beginTime, Date endTime){
-        return carouselService.carouselList(page, rows,carousel,beginTime,endTime);
+    public EasyUIDataGrideResult carouselManager(Integer page, Integer rows, Carousel carousel, Date beginTime, Date endTime) {
+        return carouselService.carouselList(page, rows, carousel, beginTime, endTime);
+    }
+
+    @RequestMapping("/carouselList")
+    @ResponseBody
+    public String carouselList() {
+
+        List carouselList =  carouselService.carouselList();
+        Gson gson=new Gson();
+
+        String str = gson.toJson(carouselList);
+        System.out.printf("11111+"+str);
+
+        return str;
+    }
+
+
+    @ResponseBody
+    @RequestMapping(value = "upload")
+    public Map<String, Object> upString(HttpServletRequest httpRequest) throws Exception {
+        System.out.println("up");
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        Map<String, Object> Map = new HashMap<String, Object>();
+
+        if (httpRequest instanceof MultipartHttpServletRequest) {
+            MultipartHttpServletRequest request = (MultipartHttpServletRequest) httpRequest;
+           // systemParameterService.saveSystemParaMul(request);
+        } else {
+            //systemParameterService.saveSystemPara(httpRequest);
+        }
+
+        MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) httpRequest;
+        Map<String, MultipartFile> fileMap = multipartRequest.getFileMap();//文件集合
+
+        return null;
     }
 
     @RequestMapping("/findById")
     @ResponseBody
-    public ServerResponse findById(Integer id){
+    public ServerResponse findById(Integer id) {
         return carouselService.findById(id);
     }
 
     @RequestMapping("/query")
     @ResponseBody
-    public ServerResponse query(){
+    public ServerResponse query() {
 
         int a;
 
@@ -41,8 +85,6 @@ public class CarouselController{
 
         return carouselService.query();
     }
-
-
 
 
 //

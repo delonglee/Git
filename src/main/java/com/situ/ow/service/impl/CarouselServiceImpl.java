@@ -8,6 +8,7 @@ import com.situ.ow.mapper.CarouselMapper;
 import com.situ.ow.pojo.Carousel;
 import com.situ.ow.pojo.CarouselExample;
 import com.situ.ow.service.ICarouselService;
+import com.situ.ow.util.Util;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,7 +28,6 @@ public class CarouselServiceImpl implements ICarouselService {
 
         EasyUIDataGrideResult result = new EasyUIDataGrideResult();
 
-
         CarouselExample carouselExample = new CarouselExample();
 
         //1.添加pagehelper插件后 使用pagehelper设置分页
@@ -37,13 +37,13 @@ public class CarouselServiceImpl implements ICarouselService {
 
 
         if (StringUtils.isNotEmpty(carousel.getTextInfo())) {
-            //criteria.addTextinfoLike(Util.formatLike(carousel.getTextInfo()));
+            criteria.andTextInfoLike(Util.formatLike(carousel.getTextInfo()));
         }
 
-
-
         carouselExample.setOrderByClause("index_num");
-        List<Carousel> carousellist = carouselMapper.selectByExample(carouselExample);
+
+
+        List<Carousel> carousellist = queryCarouselList(carouselExample);
         //得到total
         PageInfo<Carousel> pageInfo = new PageInfo<Carousel>(carousellist);
         int total = (int) pageInfo.getTotal();
@@ -51,6 +51,23 @@ public class CarouselServiceImpl implements ICarouselService {
         result.setRows(carousellist);
         return result;
     }
+
+    @Override
+    public List carouselList (){
+        CarouselExample carouselExample = new CarouselExample();
+        CarouselExample.Criteria criteria = carouselExample.createCriteria();
+        criteria.andStatusEqualTo("1");
+
+        return queryCarouselList( carouselExample);
+    }
+
+    private List<Carousel>  queryCarouselList( CarouselExample carouselExample ){
+
+        List<Carousel> carousellist = carouselMapper.selectByExample(carouselExample);
+        return carousellist;
+    }
+
+
 
     @Override
     public ServerResponse delete(String ids) {
